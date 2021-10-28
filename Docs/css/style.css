@@ -61,3 +61,11 @@ sliderBox{
     left:25px;
     margin-top: 50px;;
 }
+
+readybutton{
+    background-color: black;
+    width: 15vw;
+    height: 15vh;
+    left:10vw;
+    top:70vh;
+}

@@ -83,20 +83,29 @@ var Game = (function () {
         Game.raspi = new Raspi("5vw", "7.5vh", "7.5vw", "2vh");
         this.dialog = new Dialog(1);
         var html = document.getElementsByTagName("html")[0];
-        html.style.filter = "blur(2.5px)";
+        if (localStorage.getItem("blur") == undefined) {
+            Game.blurAmount = 2.5;
+        }
+        else {
+            Game.blurAmount = parseInt(localStorage.getItem("blur"));
+        }
+        html.style.filter = "blur(" + Game.blurAmount + "px)";
     }
     Game.sliderPuzzle = function () {
         console.log("act one started");
         var cameraSliders = document.createElement("sliderBox");
         var game = document.getElementsByTagName("game")[0];
+        var readyButton = document.createElement("readyButton");
         game.appendChild(cameraSliders);
+        game.appendChild(readyButton);
+        readyButton.addEventListener("click", function () { return Game.saveBlur(); });
         for (var i = 0; i < 3; i++) {
             var slider = document.createElement("input");
             cameraSliders.appendChild(slider);
             slider.type = "range";
             slider.min = "0";
-            slider.max = "40";
-            slider.value = "20";
+            slider.max = "50";
+            slider.value = ((i * 10) + 15).toString();
             slider.className = "slider";
             slider.id = "slider" + i;
             slider.addEventListener("input", function () { return Game.sliderChanged(); });
@@ -106,12 +115,16 @@ var Game = (function () {
         var slider0 = parseInt(document.getElementById("slider0").value);
         var slider1 = parseInt(document.getElementById("slider1").value);
         var slider2 = parseInt(document.getElementById("slider2").value);
-        console.log(slider0);
-        console.log(slider1);
-        console.log(slider2);
-        if (slider0 == 10 && slider1 == 30 && slider2 == 37) {
-            console.log("sliders are correct");
+        Game.blurAmount = ((2 * (slider0)) + (slider1 / 4) + (slider2 - 50));
+        var html = document.getElementsByTagName("html")[0];
+        if (Game.blurAmount < 0) {
+            Game.blurAmount = Game.blurAmount * -1;
         }
+        console.log(Game.blurAmount);
+        html.style.filter = "blur(" + Game.blurAmount.toString() + "px)";
+    };
+    Game.saveBlur = function () {
+        localStorage.setItem('blur', Game.blurAmount.toString());
     };
     return Game;
 }());
