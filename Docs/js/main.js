@@ -10,17 +10,17 @@ var Dialog = (function () {
                 switch (Dialog.boxNumber) {
                     case 1: {
                         console.log("instance one has been called");
-                        this.popupBox = new Popup("1000px", "1000px", "50px", "50px", "testing this popup");
+                        this.popupBox = new Popup("75vw", "10vh", "15vw", "7.5vh", "100100110101");
                         break;
                     }
                     case 2: {
                         console.log("next box is here so new popup should go up");
-                        this.popupBox = new Popup("1000px", "1000px", "50px", "50px", "second popup test");
+                        this.popupBox = new Popup("75vw", "10vh", "15vw", "7.5vh", "1001010111011101 01101000110010  100011110001010 111010100");
                         break;
                     }
                     case 3: {
                         console.log("ending dialog");
-                        Game.act1();
+                        Game.sliderPuzzle();
                         break;
                     }
                 }
@@ -62,28 +62,56 @@ var Popup = (function () {
     return Popup;
 }());
 var Raspi = (function () {
-    function Raspi() {
+    function Raspi(width, height, xpos, ypos) {
         console.log("raspi created");
         this.raspberry = document.createElement("raspi");
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.raspberry);
+        this.raspberry.style.width = width;
+        this.raspberry.style.height = height;
+        this.raspberry.style.left = xpos;
+        this.raspberry.style.top = ypos;
     }
+    Raspi.raspiChange = function () {
+    };
     return Raspi;
 }());
 window.addEventListener("load", function () { return new Game(); });
 var Game = (function () {
     function Game() {
         console.log("game created");
-        Game.raspi = new Raspi();
+        Game.raspi = new Raspi("5vw", "7.5vh", "7.5vw", "2vh");
         this.dialog = new Dialog(1);
+        var html = document.getElementsByTagName("html")[0];
+        html.style.filter = "blur(2.5px)";
     }
-    Game.prototype.dealDmg = function (dmg) {
-        console.log("taking dmg");
-        console.log(this.player.hp);
-        this.player.takeDmg(dmg);
-    };
-    Game.act1 = function () {
+    Game.sliderPuzzle = function () {
         console.log("act one started");
+        var cameraSliders = document.createElement("sliderBox");
+        var game = document.getElementsByTagName("game")[0];
+        game.appendChild(cameraSliders);
+        for (var i = 0; i < 3; i++) {
+            var slider = document.createElement("input");
+            cameraSliders.appendChild(slider);
+            slider.type = "range";
+            slider.min = "0";
+            slider.max = "40";
+            slider.value = "20";
+            slider.className = "slider";
+            slider.id = "slider" + i;
+            slider.addEventListener("input", function () { return Game.sliderChanged(); });
+        }
+    };
+    Game.sliderChanged = function () {
+        var slider0 = parseInt(document.getElementById("slider0").value);
+        var slider1 = parseInt(document.getElementById("slider1").value);
+        var slider2 = parseInt(document.getElementById("slider2").value);
+        console.log(slider0);
+        console.log(slider1);
+        console.log(slider2);
+        if (slider0 == 10 && slider1 == 30 && slider2 == 37) {
+            console.log("sliders are correct");
+        }
     };
     return Game;
 }());

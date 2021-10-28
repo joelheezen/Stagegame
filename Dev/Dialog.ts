@@ -15,17 +15,17 @@ class Dialog{
                 switch(Dialog.boxNumber){
                     case 1:{
                         console.log("instance one has been called")
-                        this.popupBox = new Popup("1000px", "1000px","50px", "50px","testing this popup")
+                        this.popupBox = new Popup("75vw", "10vh","15vw", "7.5vh","100100110101")
                         break
                     }
                     case 2:{
                         console.log("next box is here so new popup should go up")
-                        this.popupBox = new Popup("1000px", "1000px","50px", "50px","second popup test")
+                        this.popupBox = new Popup("75vw", "10vh","15vw", "7.5vh","1001010111011101 01101000110010  100011110001010 111010100")
                         break
                     }
                     case 3:{
                         console.log("ending dialog")
-                        Game.act1()
+                        Game.sliderPuzzle()
                         break
                     }
                 }

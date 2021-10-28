@@ -22,7 +22,6 @@
 game *{
     font-family: Humanoid;
     display:block;
-    filter:blur(0px);
     position:absolute;
 }
 
@@ -32,8 +31,6 @@ h1{
 
 raspi{
     background-image:url(../assets/raspberry-pi-logo.png);
-    width: 100px;
-    height: 100px;
     background-size:100% 100%
 }
 
@@ -47,4 +44,20 @@ popup{
     border-style:double;
     font-size: xx-large;
     position:absolute
+}
+
+sliderBox{
+    background-color:blue;
+    width:250px;
+    height:250px;
+    top: 50vh;
+    left:50vw;
+}
+
+.slider{
+    color:red;
+    position:relative;
+    width: 200px;
+    left:25px;
+    margin-top: 50px;;
 }
