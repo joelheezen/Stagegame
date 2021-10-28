@@ -41,41 +41,6 @@ var Dialog = (function () {
     Dialog.boxNumber = 1;
     return Dialog;
 }());
-var Popup = (function () {
-    function Popup(width, heigth, xpos, ypos, text) {
-        var _this = this;
-        console.log("popup created");
-        var game = document.getElementsByTagName("game")[0];
-        this.popup = document.createElement("popup");
-        game.appendChild(this.popup);
-        this.popup.style.width = width;
-        this.popup.style.height = heigth;
-        this.popup.style.left = xpos;
-        this.popup.style.top = ypos;
-        this.popup.innerHTML = text;
-        this.popup.addEventListener("click", function () { return _this.clickedPopup(); });
-    }
-    Popup.prototype.clickedPopup = function () {
-        this.popup.remove();
-        Dialog.nextBox();
-    };
-    return Popup;
-}());
-var Raspi = (function () {
-    function Raspi(width, height, xpos, ypos) {
-        console.log("raspi created");
-        this.raspberry = document.createElement("raspi");
-        var game = document.getElementsByTagName("game")[0];
-        game.appendChild(this.raspberry);
-        this.raspberry.style.width = width;
-        this.raspberry.style.height = height;
-        this.raspberry.style.left = xpos;
-        this.raspberry.style.top = ypos;
-    }
-    Raspi.raspiChange = function () {
-    };
-    return Raspi;
-}());
 window.addEventListener("load", function () { return new Game(); });
 var Game = (function () {
     function Game() {
@@ -146,5 +111,40 @@ var Player = (function () {
         }
     };
     return Player;
+}());
+var Popup = (function () {
+    function Popup(width, heigth, xpos, ypos, text) {
+        var _this = this;
+        console.log("popup created");
+        var game = document.getElementsByTagName("game")[0];
+        this.popup = document.createElement("popup");
+        game.appendChild(this.popup);
+        this.popup.style.width = width;
+        this.popup.style.height = heigth;
+        this.popup.style.left = xpos;
+        this.popup.style.top = ypos;
+        this.popup.innerHTML = text;
+        this.popup.addEventListener("click", function () { return _this.clickedPopup(); });
+    }
+    Popup.prototype.clickedPopup = function () {
+        this.popup.remove();
+        Dialog.nextBox();
+    };
+    return Popup;
+}());
+var Raspi = (function () {
+    function Raspi(width, height, xpos, ypos) {
+        console.log("raspi created");
+        this.raspberry = document.createElement("raspi");
+        var game = document.getElementsByTagName("game")[0];
+        game.appendChild(this.raspberry);
+        this.raspberry.style.width = width;
+        this.raspberry.style.height = height;
+        this.raspberry.style.left = xpos;
+        this.raspberry.style.top = ypos;
+    }
+    Raspi.raspiChange = function () {
+    };
+    return Raspi;
 }());
 //# sourceMappingURL=main.js.map
