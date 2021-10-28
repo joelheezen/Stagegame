@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'HUMANOID.TTF';
+    src: url(../assets/font/HUMANOID.TTF.eot);
+    src: url(../assets/font/HUMANOID.TTF.eot?#iefix) format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Humanoid';
+    src: url(../assets/font/Humanoid.svg#Humanoid) format('svg'),
+         url(../assets/font/Humanoid.ttf) format('truetype'),
+         url(../assets/font/Humanoid.woff) format('woff'),
+         url(../assets/font/Humanoid.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+
+
+
+game *{
+    font-family: Humanoid;
+    display:block;
+    filter:blur(0px);
+    position:absolute;
+}
+
+h1{
+    color:red;
+}
+
+raspi{
+    background-image:url(../assets/raspberry-pi-logo.png);
+    width: 100px;
+    height: 100px;
+    background-size:100% 100%
+}
+
+player{
+    background-color: red;
+    width:100px;
+    height:100px;
+}
+
+popup{
+    border-style:double;
+    font-size: xx-large;
+    position:absolute
+}
