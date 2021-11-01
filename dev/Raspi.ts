@@ -13,8 +13,9 @@ class Raspi{
         this.raspberry.style.top = ypos
     }
 
-    static raspiChange(){
-
+    static delete(){
+        let raspberry = document.getElementsByTagName("raspi")[0]
+        raspberry.remove() 
     }
 
 
